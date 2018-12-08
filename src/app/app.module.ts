@@ -1,9 +1,12 @@
+//browser
 import { BrowserModule } from '@angular/platform-browser';
+//core
 import { NgModule } from '@angular/core';
-
+//routing
 import { AppRoutingModule } from './app-routing.module';
+//app
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+
 import { ArticleComponent } from './article/article.component';
 import { MenuComponent } from './menu/menu.component';
 import { TagComponent } from './tag/tag.component';
@@ -13,17 +16,19 @@ import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
+    //app
     AppComponent,
-    LoginComponent,
-    ArticleComponent,
-    MenuComponent,
+    FriendComponent,
     TagComponent,
     ForumComponent,
-    FriendComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    MenuComponent,
+    ArticleComponent
   ],
   imports: [
+    //browser
     BrowserModule,
+    //routing
     AppRoutingModule
   ],
   providers: [],
