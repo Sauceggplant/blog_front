@@ -1,37 +1,30 @@
-//browser
-import { BrowserModule } from '@angular/platform-browser';
-//core
-import { NgModule } from '@angular/core';
-//routing
-import { AppRoutingModule } from './app-routing.module';
-//app
-import { AppComponent } from './app.component';
-
-import { ArticleComponent } from './article/article.component';
-import { MenuComponent } from './menu/menu.component';
-import { TagComponent } from './tag/tag.component';
-import { ForumComponent } from './forum/forum.component';
-import { FriendComponent } from './friend/friend.component';
-import { CategoriesComponent } from './categories/categories.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {NavComponent} from './nav/nav.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {NavService} from './nav/nav.service';
+import {LoginService} from './login/login.service';
+import {RegisterService} from './register/register.service';
 
 @NgModule({
   declarations: [
-    //app
     AppComponent,
-    FriendComponent,
-    TagComponent,
-    ForumComponent,
-    CategoriesComponent,
-    MenuComponent,
-    ArticleComponent
+    NavComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
-    //browser
     BrowserModule,
-    //routing
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    NavService,
+    LoginService,
+    RegisterService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

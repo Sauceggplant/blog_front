@@ -1,0 +1,43 @@
+<!-- 注册modal -->
+<div>
+  <div class="modal fade registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerModalLabel">注册</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="reg_username">账户</label>
+              <input #reg_username type="text" class="form-control" id="reg_username" aria-describedby="regAccountHelp"
+                     placeholder="请输入您的账号">
+              <small id="regAccountHelp" class="form-text text-muted">邮箱、手机号或用户名登陆</small>
+            </div>
+            <div class="form-group">
+              <label for="reg_password">密码</label>
+              <input #reg_password type="password" class="form-control" id="reg_password" placeholder="请输入您的密码">
+            </div>
+            <div class="form-group">
+              <label for="reg_repassword">再次输入密码</label>
+              <input #reg_repassword type="password" class="form-control" id="reg_repassword"
+                     aria-describedby="regRepasswordHelp" placeholder="请再次输入您的密码">
+              <small id="regRepasswordHelp" class="form-text text-muted">邮箱、手机号或用户名登陆</small>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" data-target="#registerModal">取消</button>
+          <button (click)="register(reg_username.value,reg_password.value,reg_repassword.value)"
+                  (keyup.enter)="register(reg_username.value,reg_password.value,reg_repassword.value)"
+                  type="button" class="btn btn-primary" data-dismiss="modal" data-target="#registerModal">注册
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
