@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Account} from '../account/account';
+import {RegisterData} from './register.data';
 import {RegisterService} from './register.service';
 
 /**
@@ -14,6 +16,20 @@ import {RegisterService} from './register.service';
 })
 export class RegisterComponent implements OnInit {
 
+  /**
+   * 登陆操作传值
+   */
+  @Output('doRegister') doRegister = new EventEmitter<any>();
+
+  /**
+   * 注册的账户信息
+   */
+  registerAccount: Account = {
+    id: '',
+    username: '',
+    password: '',
+  };
+
   constructor(private RegisterService: RegisterService) {
   }
 
@@ -26,11 +42,10 @@ export class RegisterComponent implements OnInit {
    * @param password 密码
    * @param repassword 重复密码
    */
-  private register(username, password, repassword) {
-    if (this.RegisterService.register(username, password, repassword)) {
-      console.log('####register():success');
-    } else {
-      console.log('####register():failed');
-    }
+  register(username:string, password:string, repassword:string) {
+    var registerData:RegisterData = this.RegisterService.register(username, password, repassword);
+    this.registerAccount = registerData.account;
+    console.log('####register():'+registerData.result+":"+registerData.info);
+    this.doRegister.emit(registerData);
   }
 }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import swal from 'sweetalert2';
 import {Account} from '../account/account';
+import {RegisterData} from './register.data';
 
 /**
  * 注册服务
@@ -12,46 +13,65 @@ import {Account} from '../account/account';
 export class RegisterService {
 
   /**
-   * 注册的账户信息
-   */
-  private static registerAccount: Account = {
-    id: '',
-    username: '',
-    password: '',
-  };
-
-  /**
    * 注册服务实现
-   * @param username
-   * @param password
-   * @param repassword
+   * @param username 用户名
+   * @param password 密码
+   * @param repassword 重复输入密码
    */
-  public register(username, password, repassword) {
+  public register(username: string, password: string, repassword: string) {
+    var account: Account = {
+      id: '',
+      username: '',
+      password: '',
+    };
+    var registerData: RegisterData = {
+      result: false,
+      info: '',
+      account: account
+    };
     if (password == repassword) {
-      RegisterService.registerAccount.username = username;
-      RegisterService.registerAccount.password = password;
-      console.log('####register():' + JSON.stringify(RegisterService.registerAccount) + '\n{"username":"' + username + ',"password":"' + password + ',"repassword":"' + repassword + '"}');
-      if (username == 'zhangsan') {
+      account.username = username;
+      account.password = password;
+      if (this.accountIsExist(username)) {
         swal({
           type: 'error',
           title: '温馨提示',
           text: '该用户已存在'
         });
-        return false;
+        registerData.result = false;
+        registerData.info = '该用户已存在';
+      } else if (username.length < 6) {
+        swal({
+          type: 'error',
+          title: '温馨提示',
+          text: '用户名长度不能小于6位'
+        });
+        registerData.result = false;
+        registerData.info = '用户名长度不能小于6位';
+      } else if (username.length > 64) {
+        swal({
+          type: 'error',
+          title: '温馨提示',
+          text: '用户名长度不能大于64位'
+        });
+        registerData.result = false;
+        registerData.info = '用户名长度不能大于64位';
       } else if (password.length < 6) {
         swal({
           type: 'error',
           title: '温馨提示',
           text: '密码长度不能小于6位'
         });
-        return false;
+        registerData.result = false;
+        registerData.info = '密码长度不能小于6位';
       } else {
         swal({
           type: 'info',
-          title: '注册成功',
-          text: JSON.stringify(RegisterService.registerAccount)
+          title: '温馨提示',
+          text: '注册成功'
         });
-        return true;
+        registerData.result = true;
+        registerData.info = '注册成功';
       }
     } else {
       swal({
@@ -59,23 +79,18 @@ export class RegisterService {
         title: '温馨提示',
         text: '您两次输入的密码不一致'
       });
-      console.log('####register():' + JSON.stringify(RegisterService.registerAccount) + '\n{"username":"' + username + ',"password":"' + password + ',"repassword":"' + repassword + '"}');
-      return false;
+      registerData.result = false;
+      registerData.info = '您两次输入的密码不一致';
     }
+    //console.log(JSON.stringify(account));
+    return registerData;
   }
 
-  /**
-   * 获取注册信息
+    /**
+   * 账户是否存在
+   * @param username 用户名
    */
-  public getAccount() {
-    return RegisterService.registerAccount;
-  }
-
-  /**
-   * 设置注册信息
-   * @param account 注册信息
-   */
-  public setAccount(account: Account) {
-    RegisterService.registerAccount = account;
+  accountIsExist(username:string) {
+    return username=='zhangsan';
   }
 }

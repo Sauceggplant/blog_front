@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {LoginService} from './login.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Account } from '../account/account';
+import { LoginService } from './login.service';
+import { LoginData } from './login.data';
 
 /**
  * 登陆modal组件
@@ -14,6 +16,20 @@ import {LoginService} from './login.service';
 })
 export class LoginComponent implements OnInit {
 
+  /**
+   * 登陆操作传值
+   */
+  @Output('doLogin') doLogin = new EventEmitter<any>();
+
+  /**
+   * 登陆的账户信息
+   */
+  loginAccount: Account = {
+    id: '',
+    username: '',
+    password: '',
+  };
+
   constructor(private LoginService: LoginService) {
   }
 
@@ -25,11 +41,10 @@ export class LoginComponent implements OnInit {
    * @param username 用户名
    * @param password 密码
    */
-  private login(username, password) {
-    if (this.LoginService.login(username, password)) {
-      console.log('####login():success');
-    } else {
-      console.log('####login():failed');
-    }
+  login(username: string, password: string) {
+    var loginData: LoginData = this.LoginService.login(username, password);
+    this.loginAccount = loginData.account;
+    console.log('####login():' + loginData.result + ':' + loginData.info);
+    this.doLogin.emit(loginData);
   }
 }

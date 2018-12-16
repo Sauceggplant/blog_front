@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import {Account} from '../account/account';
 import {NavService} from './nav.service';
-import {LoginService} from '../login/login.service';
-import {RegisterService} from '../register/register.service';
 
 /**
  * 登陆modal组件
@@ -17,14 +15,30 @@ import {RegisterService} from '../register/register.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private NavService: NavService, private LoginService: LoginService, private RegisterService: RegisterService) {
+  @ViewChild('loginAccount') loginAccount: Account;
+
+  @ViewChild('registerAccount') registerAccount: Account;
+
+  constructor(private NavService: NavService) {
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.title = this.NavService.getTitle();
-    this.showLogin = this.NavService.showLogin();
-    this.showRegister = this.NavService.showRegister();
-    this.showQuit = this.NavService.showQuit();
+    this.showLogin = true;
+    this.showRegister = true;
+    this.showQuit = false;
+  }
+
+  doLogin() {
+    this.showLogin = false;
+    this.showRegister = false;
+    this.showQuit = true;
+  }
+
+  doRegister() {
+    this.showLogin = true;
+    this.showRegister = true;
+    this.showQuit = false;
   }
 
   /**
@@ -44,7 +58,10 @@ export class NavComponent implements OnInit {
       username: '',
       password: '',
     };
-    this.LoginService.setAccount(account);
-    this.RegisterService.setAccount(account);
+    this.loginAccount = account;
+    this.registerAccount = account;
+    this.showLogin = true;
+    this.showRegister = true;
+    this.showQuit = false;
   }
 }
