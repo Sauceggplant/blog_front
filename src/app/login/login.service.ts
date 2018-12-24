@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import swal from 'sweetalert2';
 import {Account} from '../account/account';
-import {LoginData} from './login.data';
+import {LoginData} from './login';
 
 /**
  * 登陆服务

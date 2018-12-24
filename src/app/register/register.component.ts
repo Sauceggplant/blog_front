@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Account} from '../account/account';
-import {RegisterData} from './register.data';
+import {RegisterData} from './register';
 import {RegisterService} from './register.service';
 
 /**

@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import {Account} from '../account/account';
 import {NavService} from './nav.service';
+import { TabsetConfig } from 'ngx-bootstrap';
 
 /**
  * 登陆modal组件
@@ -11,7 +12,8 @@ import {NavService} from './nav.service';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.css'],
+  providers: [TabsetConfig]
 })
 export class NavComponent implements OnInit {
 

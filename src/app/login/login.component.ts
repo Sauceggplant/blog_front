@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Account } from '../account/account';
 import { LoginService } from './login.service';
-import { LoginData } from './login.data';
+import { LoginData } from './login';
 
 /**
  * 登陆modal组件

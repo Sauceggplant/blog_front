@@ -8,7 +8,7 @@ import {RegisterComponent} from './register/register.component';
 import {NavService} from './nav/nav.service';
 import {LoginService} from './login/login.service';
 import {RegisterService} from './register/register.service';
-
+import {TabsModule} from 'ngx-bootstrap'
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +18,8 @@ import {RegisterService} from './register/register.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TabsModule
   ],
   providers: [
     NavService,
