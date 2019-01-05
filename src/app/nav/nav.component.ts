@@ -1,69 +1,24 @@
-import {Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import {Account} from '../account/account';
-import {NavService} from './nav.service';
-import { TabsetConfig } from 'ngx-bootstrap';
+import { Component, OnInit } from '@angular/core';
 
-/**
- * 登陆modal组件
- * @author zhaozixing
- * @date 2018-12-15
- * @version V1.0.0
- */
+import { Nav } from './nav';
+import { NAVS } from './nav.data';
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css'],
-  providers: [TabsetConfig]
+  styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
 
-  @ViewChild('loginAccount') loginAccount: Account;
+  title: string;
+  home: string;
+  navitems: Array<Nav>;
 
-  @ViewChild('registerAccount') registerAccount: Account;
-
-  constructor(private NavService: NavService) {
-  }
+  constructor() { }
 
   ngOnInit() {
-    this.title = this.NavService.getTitle();
-    this.showLogin = true;
-    this.showRegister = true;
-    this.showQuit = false;
-  }
-
-  doLogin() {
-    this.showLogin = false;
-    this.showRegister = false;
-    this.showQuit = true;
-  }
-
-  doRegister() {
-    this.showLogin = true;
-    this.showRegister = true;
-    this.showQuit = false;
-  }
-
-  /**
-   * 标题
-   */
-  private title: string;
-
-  private showLogin: boolean = false;
-
-  private showRegister: boolean = false;
-
-  private showQuit: boolean = false;
-
-  private quit() {
-    var account: Account = {
-      id: '',
-      username: '',
-      password: '',
-    };
-    this.loginAccount = account;
-    this.registerAccount = account;
-    this.showLogin = true;
-    this.showRegister = true;
-    this.showQuit = false;
+    this.title = '个人博客';
+    this.home = '首页';
+    this.navitems = NAVS;
   }
 }

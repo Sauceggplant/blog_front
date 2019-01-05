@@ -1,31 +1,38 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {NavComponent} from './nav/nav.component';
-import {LoginComponent} from './login/login.component';
-import {RegisterComponent} from './register/register.component';
-import {NavService} from './nav/nav.service';
-import {LoginService} from './login/login.service';
-import {RegisterService} from './register/register.service';
-import {TabsModule} from 'ngx-bootstrap'
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { NavComponent } from './nav/nav.component';
+import { ShareComponent } from './share/share.component';
+import { DiaryComponent } from './diary/diary.component';
+import { MessageComponent } from './message/message.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AboutComponent } from './about/about.component';
+import { LearnComponent } from './learn/learn.component';
+import { HomeComponent } from './home/home.component';
+import { CalendarComponent } from './calendar/calendar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
+    ShareComponent,
+    DiaryComponent,
+    MessageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AboutComponent,
+    LearnComponent,
+    HomeComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    TabsModule
+    AppRoutingModule
   ],
-  providers: [
-    NavService,
-    LoginService,
-    RegisterService],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

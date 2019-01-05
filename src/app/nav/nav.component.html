@@ -1,35 +1,19 @@
-<!-- 导航组件 -->
-<div>
-  <nav class="navbar navbar-expand navbar-light bg-light">
-    <a class="navbar-brand" href="#"><img src="favicon.ico" width="30" height="30" class="d-inline-block align-top"
-                                          alt="{{title}}">{{title}}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true">首页</i></a>
-        </li>
-        <li *ngIf="showLogin" class="nav-item" data-toggle="modal" data-target=".loginModal">
-          <a class="nav-link">
-            <i class="fa fa-sign-in" aria-hidden="true">登陆</i>
-          </a>
-        </li>
-        <li *ngIf="showRegister" class="nav-item" data-toggle="modal" data-target=".registerModal">
-          <a class="nav-link">
-            <i class="fa fa-user-plus" aria-hidden="true">注册</i>
-          </a>
-        </li>
-        <li *ngIf="showQuit" class="nav-item" (click)="quit()">
-          <a class="nav-link">
-            <i class="fa fa-sign-out" aria-hidden="true">退出</i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</div>
-<app-login #loginAccount (doLogin)="doLogin($event)"></app-login>
-<app-register #registerAccount (doRegister)="doRegister($event)"></app-register>
+<nav id="navbar" class="navbar navbar-default navbar-expand-sm"
+  role="navigation">
+
+  <i class="navbar-brand"><a><img src="favicon.ico">{{title}}</a></i>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <a class="btn btn-default"><i class="fa fa-bars fa-2x"></i></a>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav nav nav-pills">
+      <li class="nav-item" class *ngFor="let navitem of navitems">
+        <a class="nav-link" href="{{navitem.href}}"><i class="{{navitem.icon}}" aria-hidden="true"></i>{{navitem.name}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
