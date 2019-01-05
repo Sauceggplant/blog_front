@@ -12,7 +12,6 @@ import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { LearnComponent } from './learn/learn.component';
 import { HomeComponent } from './home/home.component';
-import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     RegisterComponent,
     AboutComponent,
     LearnComponent,
-    HomeComponent,
-    CalendarComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

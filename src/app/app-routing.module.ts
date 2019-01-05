@@ -1,4 +1,3 @@
-import { CalendarComponent } from './calendar/calendar.component';
 import { HomeComponent } from './home/home.component';
 import { LearnComponent } from './learn/learn.component';
 import { DiaryComponent } from './diary/diary.component';
@@ -14,7 +13,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'index', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'calendar', component: CalendarComponent },
   { path: 'diary', component: DiaryComponent },
   { path: 'learn', component: LearnComponent },
   { path: 'login', component: LoginComponent },
