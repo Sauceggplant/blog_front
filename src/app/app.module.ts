@@ -7,8 +7,6 @@ import { NavComponent } from './nav/nav.component';
 import { ShareComponent } from './share/share.component';
 import { DiaryComponent } from './diary/diary.component';
 import { MessageComponent } from './message/message.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { LearnComponent } from './learn/learn.component';
 import { HomeComponent } from './home/home.component';
@@ -21,8 +19,6 @@ import { PreloadSelectedModuledsList } from './app-routing.preload.strategy';
     ShareComponent,
     DiaryComponent,
     MessageComponent,
-    LoginComponent,
-    RegisterComponent,
     AboutComponent,
     LearnComponent,
     HomeComponent
