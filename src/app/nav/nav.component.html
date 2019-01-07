@@ -1,7 +1,7 @@
 <nav id="navbar" class="navbar navbar-default navbar-expand-sm"
   role="navigation">
 
-  <i class="navbar-brand"><a><img src="favicon.ico">{{title}}</a></i>
+  <i class="navbar-brand faa-burst animated-hover"><a><img src="favicon.ico">{{title}}</a></i>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse"
     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav nav nav-pills">
       <li class="nav-item" *ngFor="let navitem of navitems">
-        <a class="nav-link" *ngIf="navitem.show" href="/#/{{navitem.href}}" (click)="clickNavItem(navitem)"><i class="{{navitem.icon}}" aria-hidden="true"></i>{{navitem.name}}</a>
+        <a class="nav-link" *ngIf="navitem.show" href="/#/{{navitem.href}}" (click)="clickNavItem(navitem)"><i class="{{navitem.icon}} faa-spin animated-hover" aria-hidden="true"></i>&nbsp;{{navitem.name}}</a>
       </li>
     </ul>
   </div>

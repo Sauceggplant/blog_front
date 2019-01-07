@@ -5,6 +5,8 @@ branches:
   only:
     - master
 before_script:
+  - npm install -g bower
+  - bower install --save font-awesome-animation
   - npm install -g @angular/cli
   - npm install --save
 script:
