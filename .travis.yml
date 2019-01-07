@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 10.15.0
+branches:
+  only:
+    - master
+before_script:
+  - npm install -g @angular/cli
+  - npm install --save
+script:
+  - ng build --prod
+cache:
+  directories:
+    - $HOME/.npm
